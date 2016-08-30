@@ -1,5 +1,10 @@
 from django.shortcuts import render, HttpResponse
+from django.views.generic import ListView
+
+from .models import Article
 
 
-def index(requset):
-    return render(requset, 'blog/index.html')
+class IndexView(ListView):
+    context_object_name = 'articles'
+    template_name = 'blog/index.html'
+    queryset = Article.objects.all().order_by('-pub_time')

@@ -5,6 +5,11 @@
     <title>Giraffe's COOK HOUSE</title>
 </head>
 <body>
-
+    <h1>Giraffe's COOK HOUSE</h1>
+    {% for article in articles %}
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.abstract }}</p>
+    <a href="{{ article.get_absolute_url }}">阅读全文</a>
+    {% endfor %}
 </body>
 </html>
