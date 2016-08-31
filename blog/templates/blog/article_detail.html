@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <h1>{{ article.title }}</h1>
-        <span>发布于：{{ article.pub_time.date }}</span><span>被浏览：{{ article.view_times }}次</span>
-        <p>{{ article.body }}</p>
-    </div>
+        <div id="id-article" class="container">
+            <h1>{{ article.title }}<small id="id-tags">{% for tag in article.tags.all %}<a href="#">{{ tag.tag_name }}</a>{% endfor %}</small></h1>
+            <span>发布于：{{ article.pub_time.date }}</span><span>被浏览：{{ article.view_times }}次</span>
+            <p>{{ article.body }}</p>
+        </div>
+    </div> <!--end id-page-->
 {% endblock %}

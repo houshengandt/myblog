@@ -2,18 +2,46 @@ body {
     background-image: url("../image/background.PNG");
     background-size: cover;
 }
+.fa {
+    color: white;
+    margin-right: 50px;
+    float: right;
+}
+.jumbotron {
+    margin: 0 -15px 0 -15px;
+    border-radius: 0;
+    background-color: #ac2925;
+    color: white;
+    font-size: 1.3em;
+}
+.navbar, .navbar-default {
+    background-color: #ac2925;
+    border: 0;
+}
+.navbar,.navbar-default .navbar-nav li a {
+    color: white;
+    font-size: 1.3em;
+}
 #id-page {
     background: rgba(192,192,192,0.5);
 }
-#id-header-back {
-    margin: 0 -15px 0 -15px;
-    border-radius: 0 0 0 100%;
-    background-color: #ac2925;
-    color: white;
-}
 #id-site-title {
     font-size: 45px;
+    color: white;
+    margin-top: -13px;
 }
+#id-article {
+    padding: 30px 60px 60px 60px;
+}
+#id-article p {
+    font-size: large;
+    margin-top: 15px;
+}
+#id-article span {
+    font-size: small;
+    margin-right: 50px;
+}
+/*todo 小屏时无法显示折叠内容，文字大有冲突*/
 #id-article-list h2 a{
     color: black;
 }
@@ -23,7 +51,7 @@ body {
 }
 #id-tags a {
     line-height: 30px;
-    float: left;
+    float: right;
     margin: 5px 5px 5px 22px;
     padding: 0 18px;color: #fff;
     text-decoration: none;

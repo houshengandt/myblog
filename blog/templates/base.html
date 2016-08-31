@@ -7,11 +7,42 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
 </head>
 <body>
+    <div id="id-page" class="container">
+        <div id="id-header-back" class="jumbotron">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#"><h1 id="id-site-title">ZhiyuC</h1></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">所有文章</a></li>
+                        <li><a href="#">我的简历</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+            <div id="id-links" class="container-fluid">
+                <span>Newness-Driven Developer</span>
+                <a href="#"><i class="fa fa-envelope-o fa-3x" aria-hidden="false"></i></a>
+                <a href="#"><i class="fa fa-weibo fa-3x" aria-hidden="false"></i></a>
+                <a href="#"><i class="fa fa-github fa-3x" aria-hidden="false"></i></a>
+            </div>
+        </div>
     {% block content %}{% endblock %}
     <!-- jQuery (Bootstrap JS plugins depend on it) -->
-    <script src="{% static 'blog/js/jquery-3.1.0.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery-2.1.4.min.js' %}"></script>
     <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'blog/js/script.js' %}"></script>
 </body>
