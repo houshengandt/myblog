@@ -14,3 +14,61 @@ body {
 #id-site-title {
     font-size: 45px;
 }
+/*标签云样式*/
+#id-tags {
+    padding: 20px;
+}
+#id-tags a {
+    line-height: 30px;
+    float: left;
+    margin: 5px 5px 5px 22px;
+    padding: 0 18px;color: #fff;
+    text-decoration: none;
+    background-color: #666;
+    position: relative;
+    border-radius: 0 1px 1px 0;
+    opacity: 0.7;
+}
+#id-tags a::before{
+    display: block;
+    content:"";
+    position: absolute;
+    left: -30px;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border: 15px transparent dashed;
+    border-left-style: solid;
+    border-right-color: #666;
+}
+#id-tags a:nth-child(6n+1){
+    background-color: #ff002b;
+}
+#id-tags a:nth-child(6n+2){
+    background-color: #ffa900;
+}
+#id-tags a:nth-child(6n+3){
+    background-color: #00a753;
+}
+#id-tags a:nth-child(6n+4){
+    background-color: #b433ff;
+}
+#id-tags a:nth-child(6n+5){
+    background-color: #b37333;
+}
+#id-tags a:nth-child(6n+1)::before{
+    border-right-color: #ff002b;
+}
+#id-tags a:nth-child(6n+2)::before{
+    border-right-color: #ffa900;
+}
+#id-tags a:nth-child(6n+3)::before{
+    border-right-color: #00a753;
+}
+#id-tags a:nth-child(6n+4)::before{
+    border-right-color: #b433ff;
+}
+#id-tags a:nth-child(6n+5)::before{
+    border-right-color: #b37333;
+}
+

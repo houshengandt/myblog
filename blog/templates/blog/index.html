@@ -14,8 +14,7 @@
             </div>
             <div id="id-tags" class="col-md-4">
                 {% for tag in tags %}
-                    <a href="#">{{ tag.tag_name }}</a>
-                    <span>{{ tag.article.count }}</span>
+                    <a href="#">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
                 {% endfor %}
             </div>
         </div>
