@@ -5,7 +5,7 @@
             <h1 id="id-site-title">Giraffe's COOK HOUSE</h1>
         </div>
         <div class="row">
-            <div class="col-md-8">
+            <div id="id-article-list" class="col-md-8">
                 {% for article in articles %}
                 <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
                 <p>{{ article.abstract }}</p>

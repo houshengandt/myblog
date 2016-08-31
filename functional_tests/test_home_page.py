@@ -20,10 +20,11 @@ class IndexTest(FunctionalTest):
         self.assertIn('Title3', [title.text for title in titles])
 
         abstract = self.browser.find_elements_by_tag_name('p')
-        self.assertEqual(abstract[0].text, self.article3.abstract)  # 同时测试排序，最新发布的在前面
+        self.assertEqual(abstract[0].text, self.article3.abstract)
 
-        button = self.browser.find_elements_by_tag_name('a')
-        self.assertIn(self.article1.get_absolute_url(), button[2].get_attribute('href'))
+        article_list = self.browser.find_element_by_id('id-article-list')
+        buttons = article_list.find_elements_by_tag_name('a')
+        self.assertIn(self.article1.get_absolute_url(), buttons[2*2].get_attribute('href'))
 
     def test_home_page_show_tags(self):
         self.init_db()
@@ -33,5 +34,5 @@ class IndexTest(FunctionalTest):
         tags = self.browser.find_element_by_id('id-tags')
         tag = tags.find_elements_by_tag_name('a')
         num = tags.find_elements_by_tag_name('span')
-        self.assertEqual(self.tag1.tag_name, tag[0].text)
-        self.assertEqual(self.tag1.article.count(), int(num[0].text))
+        self.assertIn(self.tag1.tag_name, tag[0].text)
+        self.assertEqual(self.tag1.article.count(), int(str(num[0].text).strip('(').strip(')')))

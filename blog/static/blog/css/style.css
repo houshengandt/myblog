@@ -14,6 +14,9 @@ body {
 #id-site-title {
     font-size: 45px;
 }
+#id-article-list h2 a{
+    color: black;
+}
 /*标签云样式*/
 #id-tags {
     padding: 20px;

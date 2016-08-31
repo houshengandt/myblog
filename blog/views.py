@@ -7,7 +7,7 @@ from .models import Article, Tags
 class IndexView(ListView):
     context_object_name = 'articles'
     template_name = 'blog/index.html'
-    queryset = Article.objects.all().order_by('-pub_time')
+    queryset = Article.objects.all().order_by('-pk')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
