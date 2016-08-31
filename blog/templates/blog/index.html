@@ -12,6 +12,12 @@
                 <a href="{{ article.get_absolute_url }}">阅读全文</a>
                 {% endfor %}
             </div>
+            <div id="id-tags" class="col-md-4">
+                {% for tag in tags %}
+                    <a href="#">{{ tag.tag_name }}</a>
+                    <span>{{ tag.article.count }}</span>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
