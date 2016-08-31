@@ -13,7 +13,9 @@ class Article(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return '/' + str(self.pub_time.date().year) + '/' + str(self.pub_time.date().month) + '/' + str(self.pub_time.date().day) + '/' + str(self.pk)
+        return '/' + str(self.pub_time.date().year) + '/' + str(self.pub_time.date().month) + '/' + \
+               str(self.pub_time.date().day) + '/' + str(self.pk)
+        # todo 用reverse重写
 
 
 class Comment(models.Model):
@@ -26,4 +28,3 @@ class Comment(models.Model):
 class Tags(models.Model):
     article = models.ManyToManyField(Article, related_name='tags')
     tag_name = models.CharField("标签", max_length=20)
-
