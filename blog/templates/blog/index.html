@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Giraffe's COOK HOUSE</title>
-</head>
-<body>
-    <h1>Giraffe's COOK HOUSE</h1>
-    {% for article in articles %}
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.abstract }}</p>
-    <a href="{{ article.get_absolute_url }}">阅读全文</a>
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <div id="id-page" class="container">
+        <div id="id-header-back" class="jumbotron">
+            <h1 id="id-site-title">Giraffe's COOK HOUSE</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                {% for article in articles %}
+                <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
+                <p>{{ article.abstract }}</p>
+                <a href="{{ article.get_absolute_url }}">阅读全文</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

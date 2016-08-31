@@ -1,0 +1,16 @@
+body {
+    background-image: url("../image/background.PNG");
+    background-size: cover;
+}
+#id-page {
+    background: rgba(192,192,192,0.5);
+}
+#id-header-back {
+    margin: 0 -15px 0 -15px;
+    border-radius: 0 0 0 100%;
+    background-color: #ac2925;
+    color: white;
+}
+#id-site-title {
+    font-size: 45px;
+}
