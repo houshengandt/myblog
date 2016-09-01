@@ -1,7 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView, DetailView
+from django.utils.safestring import mark_safe
+from markdown import markdown
 
 from .models import Article, Tags
+from myblog.settings import MARKDOWNX_MARKDOWN_EXTENSIONS
 
 
 class IndexView(ListView):
@@ -19,3 +22,8 @@ class ArticleDetailView(DetailView):
     model = Article
     template_name = 'blog/article_detail.html'
     context_object_name = 'article'
+
+    def get_object(self, queryset=None):
+        obj = super(ArticleDetailView, self).get_object()
+        obj.body = mark_safe(markdown(obj.body, extensions=MARKDOWNX_MARKDOWN_EXTENSIONS))
+        return obj

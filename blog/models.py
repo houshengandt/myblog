@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils import timezone
 
+from markdownx.models import MarkdownxField
+
 
 class Article(models.Model):
     title = models.CharField("标题", max_length=30)
-    body = models.TextField("正文")
+    body = MarkdownxField("正文")
     pub_time = models.DateTimeField("发布时间", default=timezone.now)
     abstract = models.TextField("摘要")
     view_times = models.IntegerField("浏览数", default=0)
