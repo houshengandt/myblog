@@ -117,7 +117,7 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.extra',
     'markdown.extensions.nl2br',
     'markdown.extensions.smarty',
-    # 'markdown.extensions.codehilite',
+    'markdown.extensions.codehilite',
 ] # List of used markdown extensions. See below for more info.
 MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {} # Configuration object for used markdown extensions
 

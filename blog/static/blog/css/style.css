@@ -1,6 +1,6 @@
 body {
     background-image: url("../image/background.PNG");
-    background-size: cover;
+    background-size: 100%;
 }
 .fa {
     color: white;
@@ -26,20 +26,10 @@ body {
     background: rgba(192,192,192,0.5);
 }
 #id-site-title {
+    line-height: 49.5px;
     font-size: 45px;
     color: white;
     margin-top: -13px;
-}
-#id-article {
-    padding: 30px 60px 60px 60px;
-}
-#id-article p {
-    font-size: large;
-    margin-top: 15px;
-}
-#id-article span {
-    font-size: small;
-    margin-right: 50px;
 }
 /*todo 小屏时无法显示折叠内容，文字大有冲突*/
 #id-article-list h2 a{
@@ -102,4 +92,14 @@ body {
 #id-tags a:nth-child(6n+5)::before{
     border-right-color: #b37333;
 }
-
+/* article_detail */
+.info {
+    margin-right: 50px;
+    font-size: small;
+}
+.article-body {
+    font-size: large;
+}
+#id-article {
+    padding: 30px 60px 60px 60px;
+}
