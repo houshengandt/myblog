@@ -115,6 +115,12 @@ hr {
     h1 {
         font-size: x-large;
     }
+    h2 {
+        font-size: large;
+    }
+    p {
+        font-size: x-small;
+    }
     #id-links span {
         display: block;
     }
