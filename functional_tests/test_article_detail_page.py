@@ -9,4 +9,4 @@ class ArticleDetailTest(FunctionalTest):
         self.browser.get(self.live_server_url + self.article1.get_absolute_url())
 
         title = self.browser.find_element_by_tag_name('h1')
-        self.assertEqual(title.text, self.article1.title)
+        self.assertIn(self.article1.title, title.text)

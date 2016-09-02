@@ -5,10 +5,10 @@
     <title>Giraffe's COOK HOUSE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/pygments/emacs.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
 </head>
 <body>
     <div id="id-page" class="container">
@@ -28,7 +28,7 @@
                     <div class="collapse navbar-collapse" id="navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'index' %}">主页</a></li>
-                        <li><a href="#">所有文章</a></li>
+                        <li><a href="{% url 'archive' %}">所有文章</a></li>
                         <li><a href="#">我的简历</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->

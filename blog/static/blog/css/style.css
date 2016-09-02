@@ -2,6 +2,9 @@ body {
     background-image: url("../image/background.PNG");
     background-size: 100%;
 }
+hr {
+    border-color: black;
+}
 .fa {
     color: white;
     margin-right: 50px;
@@ -30,6 +33,10 @@ body {
     font-size: 45px;
     color: white;
     margin-top: -13px;
+}
+#id-side {
+    padding-top: 30px;
+    padding-right: 60px;
 }
 /*todo 小屏时无法显示折叠内容，文字大有冲突*/
 #id-article-list h2 a{
@@ -100,6 +107,107 @@ body {
 .article-body {
     font-size: large;
 }
-#id-article {
+#id-article,#id-article-list {
     padding: 30px 60px 60px 60px;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: x-large;
+    }
+    #id-links span {
+        display: block;
+    }
+    #id-article,#id-article-list {
+    padding: 30px 20px 60px 20px;
+    }
+    #id-side {
+    padding-top: 30px;
+    padding-right: 15px;
+    }
+    .info {
+    margin-right: 30px;
+    font-size: x-small;
+    }
+    .fa {
+    color: white;
+    margin-right: 10%;
+    float: right;
+    }
+    .fa-3x {
+        font-size: 2em;
+    }
+    .article-body {
+        font-size: small;
+    }
+    /*标签云样式*/
+    #id-tags {
+        padding: 20px;
+        display: block;
+    }
+    #id-tags a {
+        line-height: 20px;
+        float: right;
+        margin: 5px 5px 5px 22px;
+        padding: 0 10px;color: #fff;
+        text-decoration: none;
+        background-color: #666;
+        position: relative;
+        border-radius: 0 1px 1px 0;
+        opacity: 0.7;
+    }
+    #id-tags a::before{
+        display: block;
+        content:"";
+        position: absolute;
+        left: -20px;
+        top: 0px;
+        width: 0;
+        height: 0;
+        border: 10px transparent dashed;
+        border-left-style: solid;
+        border-right-color: #666;
+    }
+    #id-tags a:nth-child(6n+1){
+        background-color: #ff002b;
+    }
+    #id-tags a:nth-child(6n+2){
+        background-color: #ffa900;
+    }
+    #id-tags a:nth-child(6n+3){
+        background-color: #00a753;
+    }
+    #id-tags a:nth-child(6n+4){
+        background-color: #b433ff;
+    }
+    #id-tags a:nth-child(6n+5){
+        background-color: #b37333;
+    }
+    #id-tags a:nth-child(6n+1)::before{
+        border-right-color: #ff002b;
+    }
+    #id-tags a:nth-child(6n+2)::before{
+        border-right-color: #ffa900;
+    }
+    #id-tags a:nth-child(6n+3)::before{
+        border-right-color: #00a753;
+    }
+    #id-tags a:nth-child(6n+4)::before{
+        border-right-color: #b433ff;
+    }
+    #id-tags a:nth-child(6n+5)::before{
+        border-right-color: #b37333;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .fa {
+        margin-right: 8%;
+    }
+    .fa-3x {
+        font-size: 2em;
+    }
+    #id-links {
+        padding-right: 0;
+    }
 }

@@ -12,14 +12,15 @@ class IndexTest(FunctionalTest):
 
         self.assertIn("Giraffe's COOK HOUSE", self.browser.title)
 
-        name = self.browser.find_element_by_css_selector('h1')
-        self.assertEqual(name.text, "Giraffe's COOK HOUSE")
+        name = self.browser.find_element_by_id('id-site-title')
+        self.assertEqual(name.text, "ZhiyuC")
 
         titles = self.browser.find_elements_by_tag_name('h2')
         self.assertIn('Title1', [title.text for title in titles])
         self.assertIn('Title3', [title.text for title in titles])
 
-        abstract = self.browser.find_elements_by_tag_name('p')
+        article_list = self.browser.find_element_by_id('id-article-list')
+        abstract = article_list.find_elements_by_tag_name('p')
         self.assertEqual(abstract[0].text, self.article3.abstract)
 
         article_list = self.browser.find_element_by_id('id-article-list')
