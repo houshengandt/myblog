@@ -38,7 +38,6 @@ hr {
     padding-top: 30px;
     padding-right: 60px;
 }
-/*todo 小屏时无法显示折叠内容，文字大有冲突*/
 #id-article-list h2 a{
     color: black;
 }

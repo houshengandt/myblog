@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'markdownx',
-    # 'pygments' #todo 语法高亮代码不左对齐,white-space:pre
+    'pygments',
 )
 
 MIDDLEWARE_CLASSES = (

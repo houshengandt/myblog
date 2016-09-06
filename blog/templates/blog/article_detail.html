@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-        <div class="row">
-            <div id="id-article" class="col-md-8">
-                <h1>{{ article.title }}<small id="id-tags">{% for tag in article.tags.all %}<a href="#">{{ tag.tag_name }}</a>{% endfor %}</small></h1>
-                <span class="info">发布于：{{ article.pub_time.date }}</span><span class="info">被浏览：{{ article.view_times }}次</span>
-                <hr>
-                <p>{{ article.body }}</p>
+    <div class="row">
+        <div id="id-article" class="col-md-8">
+            <h1>{{ article.title }}<small id="id-tags">{% for tag in article.tags.all %}<a href="#">{{ tag.tag_name }}</a>{% endfor %}</small></h1>
+            <span class="info">发布于：{{ article.pub_time.date }}</span><span class="info">被浏览：{{ article.view_times }}次</span>
+            <hr>
+            <p>{{ article.body }}</p>
+        </div>
+        <div id="id-side" class="col-md-4">
+            <div id="id-tags">
+                {% for tag in tags %}
+                    <a href="#">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
+                {% endfor %}
             </div>
-            <div id="id-side" class="col-md-4">
-                <div id="id-tags">
-                    {% for tag in tags %}
-                        <a href="#">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
-                    {% endfor %}
-                </div>
-                <h3>最新文章</h3>
-                <div class="list-group">
-                    {% for article in latest %}
-                    <a href="{{ article.get_absolute_url }}" class="list-group-item">{{ article.title }}</a>
-                    {% endfor %}
-                </div>
+            <h3>最新文章</h3>
+            <div class="list-group">
+                {% for article in latest %}
+                <a href="{{ article.get_absolute_url }}" class="list-group-item">{{ article.title }}</a>
+                {% endfor %}
             </div>
         </div>
-    </div> <!--end id-page-->
+    </div>
 {% endblock %}

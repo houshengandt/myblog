@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView, DetailView
+from django.views.generic.base import TemplateView
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView
 from django.utils.safestring import mark_safe
 from django.db.models import Count
@@ -79,3 +80,7 @@ class ArticleMonthArchiveView(MonthArchiveView):
         context['tags'] = Tags.objects.all()
         context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
         return context
+
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
