@@ -35,6 +35,7 @@ class ArticleDetailView(DetailView):
     def get_object(self, queryset=None):
         obj = super(ArticleDetailView, self).get_object()
         obj.body = mark_safe(markdown(obj.body, extensions=MARKDOWNX_MARKDOWN_EXTENSIONS))
+        obj.viewed()
         return obj
 
     def get_context_data(self, **kwargs):

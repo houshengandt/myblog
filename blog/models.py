@@ -19,6 +19,10 @@ class Article(models.Model):
                str(self.pub_time.date().day) + '/' + str(self.pk)
         # todo 用reverse重写
 
+    def viewed(self):
+        self.view_times += 1
+        self.save(update_fields=['view_times'])
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, related_name='comment')

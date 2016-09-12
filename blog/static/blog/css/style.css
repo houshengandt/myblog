@@ -1,6 +1,7 @@
 body {
-    background-image: url("../image/background.PNG");
-    background-size: 100%;
+    /*background-image: url("../image/background.PNG");*/
+    /*background-size: 100%;*/
+    margin-bottom: 60px;
 }
 hr {
     border-color: black;
@@ -100,8 +101,11 @@ hr {
 }
 /* article_detail */
 .info {
-    margin-right: 50px;
+
     font-size: small;
+}
+.info span {
+    margin-right: 50px;
 }
 .article-body {
     font-size: large;
@@ -109,6 +113,7 @@ hr {
 #id-article,#id-article-list {
     padding: 30px 60px 60px 60px;
 }
+
 
 @media (max-width: 480px) {
     h1 {
@@ -131,8 +136,10 @@ hr {
     padding-right: 15px;
     }
     .info {
-    margin-right: 30px;
     font-size: x-small;
+    }
+    .info span {
+        margin-right: 30px;
     }
     .fa {
     color: white;

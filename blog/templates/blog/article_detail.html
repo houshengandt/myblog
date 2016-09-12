@@ -3,7 +3,9 @@
     <div class="row">
         <div id="id-article" class="col-md-8">
             <h1>{{ article.title }}<small id="id-tags">{% for tag in article.tags.all %}<a href="#">{{ tag.tag_name }}</a>{% endfor %}</small></h1>
-            <span class="info">发布于：{{ article.pub_time.date }}</span><span class="info">被浏览：{{ article.view_times }}次</span>
+            <div class="info">
+                <span>发布于：{{ article.pub_time.date }}</span><span id="id-view-times">被浏览：{{ article.view_times }}次</span>
+            </div>
             <hr>
             <p>{{ article.body }}</p>
         </div>
