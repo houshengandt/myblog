@@ -99,3 +99,7 @@ class TagView(ListView):
 
 class AboutView(TemplateView):
     template_name = 'about.html'
+
+
+class WarningView(TemplateView):
+    template_name = 'warning.html'

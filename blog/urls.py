@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]+)/(?P<day>[0-9]+)/(?P<pk>[0-9]+)/$', views.ArticleDetailView.as_view(), name='article_detail'),
     url(r'^tag/(?P<tag>.*)/$', views.TagView.as_view(), name='tag'),
     url(r'^about/$', views.AboutView.as_view(), name='about'),
+    url(r'^admin/$', views.WarningView.as_view(), name='warning'),
 ]
