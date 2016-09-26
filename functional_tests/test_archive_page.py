@@ -17,5 +17,5 @@ class ArchivePageTest(FunctionalTest):
 
         self.browser.get(self.live_server_url + '/tag/' + 'Tag1')
 
-        text = self.browser.find_elements_by_tag_name('h1')
-        self.assertIn('Tag1', text)
+        text = self.browser.find_element_by_tag_name('h1')
+        self.assertIn('Tag1', text.text)
