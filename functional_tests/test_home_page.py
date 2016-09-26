@@ -23,16 +23,16 @@ class IndexTest(FunctionalTest):
         abstract = article_list.find_elements_by_tag_name('p')
         self.assertEqual(abstract[0].text, self.article3.abstract)
 
-        article_list = self.browser.find_element_by_id('id-article-list')
-        buttons = article_list.find_elements_by_tag_name('a')
-        self.assertIn(self.article1.get_absolute_url(), buttons[2*2].get_attribute('href'))
+        article_list = self.browser.find_element_by_tag_name('h2')
+        button = article_list.find_element_by_tag_name('a')
+        self.assertIn(self.article3.get_absolute_url(), button.get_attribute('href'))
 
     def test_home_page_show_tags(self):
         self.init_db()
 
         self.browser.get(self.live_server_url)
 
-        tags = self.browser.find_element_by_id('id-tags')
+        tags = self.browser.find_element_by_css_selector('div.tags')
         tag = tags.find_elements_by_tag_name('a')
         num = tags.find_elements_by_tag_name('span')
         self.assertIn(self.tag1.tag_name, tag[0].text)

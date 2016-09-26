@@ -34,3 +34,6 @@ class Comment(models.Model):
 class Tags(models.Model):
     article = models.ManyToManyField(Article, related_name='tags')
     tag_name = models.CharField("标签", max_length=20)
+
+    def __str__(self):
+        return self.tag_name
