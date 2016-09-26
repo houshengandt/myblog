@@ -2,7 +2,7 @@
 {% block content %}
     <div class="row">
         <div id="id-article" class="col-md-8">
-            <h1>{{ article.title }}<small id="id-tags">{% for tag in article.tags.all %}<a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}</a>{% endfor %}</small></h1>
+            <h1>{{ article.title }}<small class="tags">{% for tag in article.tags.all %}<a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}</a>{% endfor %}</small></h1>
             <div class="info">
                 <span>发布于：{{ article.pub_time.date }}</span><span id="id-view-times">被浏览：{{ article.view_times }}次</span>
             </div>
@@ -10,7 +10,7 @@
             <p>{{ article.body }}</p>
         </div>
         <div id="id-side" class="col-md-4">
-            <div id="id-tags">
+            <div class="tags">
                 {% for tag in tags %}
                     <a href="#">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
                 {% endfor %}

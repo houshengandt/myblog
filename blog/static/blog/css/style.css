@@ -1,6 +1,6 @@
 body {
-    /*background-image: url("../image/background.PNG");*/
-    /*background-size: 100%;*/
+    background-image: url("../image/background.jpg");
+    background-size: 100%;
     margin-bottom: 60px;
 }
 hr {
@@ -43,10 +43,11 @@ hr {
     color: black;
 }
 /*标签云样式*/
-#id-tags {
+
+.tags {
     padding: 20px;
 }
-#id-tags a {
+.tags a {
     line-height: 30px;
     float: right;
     margin: 5px 5px 5px 22px;
@@ -57,7 +58,7 @@ hr {
     border-radius: 0 1px 1px 0;
     opacity: 0.7;
 }
-#id-tags a::before{
+.tags a::before{
     display: block;
     content:"";
     position: absolute;
@@ -69,36 +70,61 @@ hr {
     border-left-style: solid;
     border-right-color: #666;
 }
-#id-tags a:nth-child(6n+1){
+.tags a:nth-child(6n+1),#id-article-list .tags a:nth-child(6n+1) {
     background-color: #ff002b;
 }
-#id-tags a:nth-child(6n+2){
+.tags a:nth-child(6n+2),#id-article-list .tags a:nth-child(6n+1){
     background-color: #ffa900;
 }
-#id-tags a:nth-child(6n+3){
+.tags a:nth-child(6n+3),#id-article-list .tags a:nth-child(6n+1){
     background-color: #00a753;
 }
-#id-tags a:nth-child(6n+4){
+.tags a:nth-child(6n+4),#id-article-list .tags a:nth-child(6n+1){
     background-color: #b433ff;
 }
-#id-tags a:nth-child(6n+5){
+.tags a:nth-child(6n+5),#id-article-list .tags a:nth-child(6n+1){
     background-color: #b37333;
 }
-#id-tags a:nth-child(6n+1)::before{
+.tags a:nth-child(6n+1)::before,#id-article-list .tags a:nth-child(6n+1)::before {
     border-right-color: #ff002b;
 }
-#id-tags a:nth-child(6n+2)::before{
+.tags a:nth-child(6n+2)::before,#id-article-list .tags a:nth-child(6n+1)::before{
     border-right-color: #ffa900;
 }
-#id-tags a:nth-child(6n+3)::before{
+.tags a:nth-child(6n+3)::before,#id-article-list .tags a:nth-child(6n+1)::before{
     border-right-color: #00a753;
 }
-#id-tags a:nth-child(6n+4)::before{
+.tags a:nth-child(6n+4)::before,#id-article-list .tags a:nth-child(6n+1)::before{
     border-right-color: #b433ff;
 }
-#id-tags a:nth-child(6n+5)::before{
+.tags a:nth-child(6n+5)::before,#id-article-list .tags a:nth-child(6n+1)::before{
     border-right-color: #b37333;
 }
+
+#id-article-list .tags a {
+    line-height: 20px;
+    float: right;
+    margin: 0px 30px 5px 22px;
+    padding: 0 10px;color: #fff;
+    text-decoration: none;
+    background-color: #666;
+    position: relative;
+    border-radius: 0 1px 1px 0;
+    opacity: 0.7;
+}
+#id-article-list .tags a::before {
+    display: block;
+    content:"";
+    position: absolute;
+    left: -20px;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border: 10px transparent dashed;
+    border-left-style: solid;
+    border-right-color: #666;
+}
+
 /* article_detail */
 .info {
 
@@ -153,11 +179,10 @@ hr {
         font-size: small;
     }
     /*标签云样式*/
-    #id-tags {
+    .tags {
         padding: 20px;
-        display: block;
     }
-    #id-tags a {
+    .tags a {
         line-height: 20px;
         float: right;
         margin: 5px 5px 5px 22px;
@@ -168,7 +193,7 @@ hr {
         border-radius: 0 1px 1px 0;
         opacity: 0.7;
     }
-    #id-tags a::before{
+    .tags a::before{
         display: block;
         content:"";
         position: absolute;
@@ -180,34 +205,34 @@ hr {
         border-left-style: solid;
         border-right-color: #666;
     }
-    #id-tags a:nth-child(6n+1){
+    .tags a:nth-child(6n+1){
         background-color: #ff002b;
     }
-    #id-tags a:nth-child(6n+2){
+    .tags a:nth-child(6n+2){
         background-color: #ffa900;
     }
-    #id-tags a:nth-child(6n+3){
+    .tags a:nth-child(6n+3){
         background-color: #00a753;
     }
-    #id-tags a:nth-child(6n+4){
+    .tags a:nth-child(6n+4){
         background-color: #b433ff;
     }
-    #id-tags a:nth-child(6n+5){
+    .tags a:nth-child(6n+5){
         background-color: #b37333;
     }
-    #id-tags a:nth-child(6n+1)::before{
+    .tags a:nth-child(6n+1)::before{
         border-right-color: #ff002b;
     }
-    #id-tags a:nth-child(6n+2)::before{
+    .tags a:nth-child(6n+2)::before{
         border-right-color: #ffa900;
     }
-    #id-tags a:nth-child(6n+3)::before{
+    .tags a:nth-child(6n+3)::before{
         border-right-color: #00a753;
     }
-    #id-tags a:nth-child(6n+4)::before{
+    .tags a:nth-child(6n+4)::before{
         border-right-color: #b433ff;
     }
-    #id-tags a:nth-child(6n+5)::before{
+    .tags a:nth-child(6n+5)::before{
         border-right-color: #b37333;
     }
 }

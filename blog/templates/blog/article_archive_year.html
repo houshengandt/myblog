@@ -11,10 +11,11 @@
             <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
             <p>{{ article.abstract }}</p>
             <a href="{{ article.get_absolute_url }}">阅读全文</a>
+            {% for tag in article.tags.all %}<span class="tags"><a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}</a></span>{% endfor %}
             {% endfor %}
         </div>
         <div id="id-side" class="col-md-4">
-            <div id="id-tags">
+            <div class="tags">
                 {% for tag in tags %}
                     <a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
                 {% endfor %}
