@@ -83,5 +83,19 @@ class ArticleMonthArchiveView(MonthArchiveView):
         return context
 
 
+class TagView(ListView):
+    context_object_name = 'articles'
+    template_name = 'blog/tag.html'
+
+    def get_queryset(self):
+        return Article.objects.filter(tags__tag_name=self.kwargs['tag'])
+
+    def get_context_data(self, **kwargs):
+        context = super(TagView, self).get_context_data(**kwargs)
+        context['the_tag'] = Tags.objects.filter(tag_name=self.kwargs['tag'])
+        context['tags'] = Tags.objects.all()
+        context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
+        return context
+
 class AboutView(TemplateView):
     template_name = 'about.html'

@@ -3,6 +3,7 @@
     <div class="row">
         <div id="id-article-list" class="col-md-8">
             <h1>{{ year|date:'Y' }}年的所有文章</h1>
+            <hr>
             {% for date in date_list %}
             <a href="#">{{ date|date }}</a>
             {% endfor %}
@@ -15,7 +16,7 @@
         <div id="id-side" class="col-md-4">
             <div id="id-tags">
                 {% for tag in tags %}
-                    <a href="#">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
+                    <a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
                 {% endfor %}
             </div>
             <div id="id-archive">

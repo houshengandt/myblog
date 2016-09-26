@@ -11,3 +11,11 @@ class ArchivePageTest(FunctionalTest):
         titles = self.browser.find_elements_by_tag_name('h2')
         self.assertIn('Title1', [title.text for title in titles])
         self.assertEqual('Title3', titles[0].text)
+
+    def test_tag_view(self):
+        self.init_db()
+
+        self.browser.get(self.live_server_url + '/tag/' + 'Tag1')
+
+        text = self.browser.find_elements_by_tag_name('h1')
+        self.assertIn('Tag1', text)

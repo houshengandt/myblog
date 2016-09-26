@@ -2,9 +2,9 @@
 {% block content %}
     <div class="row">
         <div id="id-article-list" class="col-md-8">
-            <h1>{{ month|date:'Y' }}年{{ month|date:'m' }}月的所有文章</h1>
+            <h1>{% for tag in the_tag %}{{ tag.tag_name }}{% endfor %}相关的文章</h1>
             <hr>
-            {% for article in article_list %}
+            {% for article in articles %}
             <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
             <p>{{ article.abstract }}</p>
             <a href="{{ article.get_absolute_url }}">阅读全文</a>
