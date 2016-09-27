@@ -17,15 +17,6 @@ class IndexView(ListView):
     template_name = 'blog/index.html'
     queryset = Article.objects.all().order_by('-pk')
 
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        context['tags'] = Tags.objects.all()
-        context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
-        # context['num'] = Article.objects.all().annotate(month=DateTime("pub_time", "month", pytz.timezone("Etc/UTC"))).\
-        #     values("month").\
-        #     annotate(created_count=Count('id'))
-        return context
-
 
 class ArticleDetailView(DetailView):
     model = Article
@@ -40,7 +31,6 @@ class ArticleDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleDetailView, self).get_context_data(**kwargs)
-        context['tags'] = Tags.objects.all()
         context['latest'] = Article.objects.all().order_by('-pk')[:10]
         return context
 
@@ -49,24 +39,12 @@ class ArticleArchiveView(ArchiveIndexView):
     model = Article
     date_field = 'pub_time'
 
-    def get_context_data(self, **kwargs):
-        context = super(ArticleArchiveView, self).get_context_data(**kwargs)
-        context['tags'] = Tags.objects.all()
-        context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
-        return context
-
 
 class ArticleYearArchiveView(YearArchiveView):
     queryset = Article.objects.all()
     date_field = 'pub_time'
     context_object_name = 'article_list'
     make_object_list = True
-
-    def get_context_data(self, **kwargs):
-        context = super(ArticleYearArchiveView, self).get_context_data(**kwargs)
-        context['tags'] = Tags.objects.all()
-        context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
-        return context
 
 
 class ArticleMonthArchiveView(MonthArchiveView):
@@ -75,12 +53,6 @@ class ArticleMonthArchiveView(MonthArchiveView):
     month_format = '%m'
     context_object_name = 'article_list'
     make_object_list = True
-
-    def get_context_data(self, **kwargs):
-        context = super(ArticleMonthArchiveView, self).get_context_data(**kwargs)
-        context['tags'] = Tags.objects.all()
-        context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
-        return context
 
 
 class TagView(ListView):
@@ -93,9 +65,8 @@ class TagView(ListView):
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
         context['the_tag'] = Tags.objects.filter(tag_name=self.kwargs['tag'])
-        context['tags'] = Tags.objects.all()
-        context['dates'] = Article.objects.datetimes('pub_time', 'month', order='DESC')
         return context
+
 
 class AboutView(TemplateView):
     template_name = 'about.html'
