@@ -1,0 +1,28 @@
+<div id="id-side" class="col-md-4">
+    <div class="tags">
+        {% for tag in tags %}
+            <a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
+        {% endfor %}
+    </div>
+    <div id="id-archive">
+        <h3>归档</h3>
+        {% regroup dates by year as dates_by_year %}
+        <ul>
+            {% for month in dates_by_year %}
+            <!-- month 是一组月份列表 -->
+            <li>
+                {{ month.grouper }} 年
+                <!-- grouper 是组头，即某个月份列表的年份 -->
+                <ul class="list-group">
+                    {% for d in month.list %}
+                    <!-- 再循环显示该年份组下的月份列表即可 -->
+                    <li class="list-group-item">
+                        <a href="{% url 'month_archive' month.grouper d|date:'m' %}"> {{ d |date:'m' }} 月</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
