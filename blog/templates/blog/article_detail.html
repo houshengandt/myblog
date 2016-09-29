@@ -12,7 +12,7 @@
         <div id="id-side" class="col-md-4">
             <div class="tags">
                 {% for tag in tags %}
-                    <a href="#">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
+                    <a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
                 {% endfor %}
             </div>
             <h3>最新文章</h3>
