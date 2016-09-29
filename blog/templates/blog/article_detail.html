@@ -15,11 +15,13 @@
                     <a href="{% url 'tag' tag.tag_name %}">{{ tag.tag_name }}<span> ({{ tag.article.count }})</span></a>
                 {% endfor %}
             </div>
-            <h3>最新文章</h3>
-            <div class="list-group">
-                {% for article in latest %}
-                <a href="{{ article.get_absolute_url }}" class="list-group-item">{{ article.title }}</a>
-                {% endfor %}
+            <div id="id-archive">
+                <h3>最新文章</h3>
+                <div class="list-group">
+                    {% for article in latest %}
+                    <a href="{{ article.get_absolute_url }}" class="list-group-item">{{ article.title }}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
