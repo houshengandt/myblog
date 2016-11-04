@@ -160,9 +160,6 @@ hr {
     h2 {
         font-size: large;
     }
-    p {
-        font-size: x-small;
-    }
     #id-links span {
         display: block;
     }
@@ -174,7 +171,7 @@ hr {
     padding-right: 15px;
     }
     .info {
-    font-size: x-small;
+    font-size: small;
     }
     .info span {
         margin-right: 30px;
