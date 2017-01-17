@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>文库自动签到</title>
+</head>
+<body>
+    <h1>百度文库自动签到</h1>
+    <form action="{% url 'verify_login' %}" method="post">
+        {% csrf_token %}
+        <img src="{% static img %}" alt="验证码">
+        <input type="hidden" name="username" value="{{ username }}">
+        <input type="text" name="verifycode">
+        <input type="submit" value="确认">
+    </form>
+</body>
+</html>

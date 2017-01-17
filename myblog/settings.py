@@ -40,6 +40,9 @@ INSTALLED_APPS = (
     'blog',
     'markdownx',
     'pygments',
+    'wenkucheckin',
+    'django_celery_results',
+    'django_celery_beat',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,7 +111,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, './static')
 
+MEDIA_ROOT = 'media/'
 
+MEDIA_URL = 'media/'
 
 # Markdownify
 MARKDOWNX_MARKDOWNIFY_FUNCTION = 'markdownx.utils.markdownify' # Default function that compiles markdown using defined extensions. Using custom function can allow you to pre-process or post-process markdown text. See below for more info.
@@ -136,3 +141,7 @@ MARKDOWNX_IMAGE_MAX_SIZE = {'size': (500, 500), 'quality': 100,} # Different opt
 
 # Editor
 MARKDOWNX_EDITOR_RESIZABLE = True # Update editor's height to inner content height while typing
+
+
+
+CELERY_RESULT_BACKEND = 'django-db'
