@@ -152,11 +152,25 @@ class LoginBaidu(object):
 
         login_response = self.session.post(self.login_url, data=data)
         if login_response.text.find('err_no=0') == -1:
-            raise Exception
+            raise Exception(login_response.text)
 
 
 class LoginBaiduWenku(LoginBaidu):
     check_in_url = "http://wenku.baidu.com/task/submit/signin"
+    check_tickets_url = "http://wenku.baidu.com/user/interface/getuserticket?ts=1&pn=0"
 
     def check_in(self):
         self.session.get(self.check_in_url)
+
+    def check_tickets(self):
+        tickets_response = self.session.get(self.check_tickets_url)
+        pattern = re.compile("\"total_count\":(\d+)")
+        match = pattern.search(tickets_response.text)
+        total_count = 0
+        if match:
+            total_count = int(match.group(1))
+        else:
+            raise Exception
+        return total_count
+
+
