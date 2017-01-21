@@ -32,7 +32,9 @@
         </form>
         <div class="table-responsive">
             <table class="table table-striped">
-                <tr><td>账号</td><td>签到次数</td><td>下载券</td><td>上次签到时间</td><td></td></tr>
+                <thead>
+                    <tr><th>账号</th><th>签到次数</th><th>下载券</th><th>上次签到时间</th><th></th></tr>
+                </thead>
                 {% for baiduaccount in object_list %}
                     <tr>
                         <td>{{ baiduaccount.username }}</td>
@@ -44,12 +46,6 @@
                 {% endfor %}
             </table>
         </div>
-        <ul>
-            {% for baiduaccount in object_list %}
-                <li>{{ baiduaccount.username }}|{{ baiduaccount.check_in_times }}|{{ baiduaccount.ticket }}|
-                    {{ baiduaccount.last_checkin_time }}|<a href="{% url 'delete_account' baiduaccount.username %}">删除</a></li>
-            {% endfor %}
-        </ul>
     </div>
 </body>
 </html>
