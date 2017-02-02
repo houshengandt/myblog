@@ -1,7 +1,6 @@
 body {
     background-image: url("../image/background.jpg");
     background-size: 100%;
-    margin-bottom: 60px;
 }
 hr {
     border-color: black;
@@ -139,7 +138,6 @@ hr {
 
 /* article_detail */
 .info {
-
     font-size: small;
 }
 .info span {
@@ -155,6 +153,18 @@ hr {
 .btn-mybutton {
     background-color: #ac2925;
     color: white;
+}
+/*footer*/
+.page-wrap {
+    min-height: calc(100vh - 60px);
+}
+footer {
+    height: 60px;
+    background-color: #252525;
+    color: #ddd !important;
+    margin-top: 30px;
+    padding-top: 30px;
+    text-align: center;
 }
 
 
