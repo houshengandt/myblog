@@ -4,3 +4,6 @@ Starting the worker process
 Start the celery beat service using the django scheduler:
 
     celery -A proj beat -l info -S django
+后台
+    
+    nohup celery -A proj beat -l info -S django

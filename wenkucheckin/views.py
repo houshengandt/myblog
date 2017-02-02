@@ -4,10 +4,18 @@ from django.core.exceptions import ObjectDoesNotExist
 import os
 import shutil
 import pickle
+import logging
 from myblog.settings import BASE_DIR
 from .models import BaiduUser
 
 from .baidulogin import LoginBaiduWenku
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt='%a, %d %b %Y %H:%M:%S',
+                    filename=os.path.join(BASE_DIR, 'wenku.log'),
+                    filemode='w')
+logger = logging.getLogger('wenku')
 
 
 class IndexView(ListView):
@@ -15,7 +23,7 @@ class IndexView(ListView):
     template_name = 'wenkucheckin/index.html'
 
 
-session_dir = os.path.join(BASE_DIR, 'wenkucheckin', 'sessions')
+session_dir = os.path.join(BASE_DIR, 'static', 'sessions')
 
 
 def add_baidu_account(request):
@@ -53,6 +61,9 @@ def verify_login(request):
         login_session.login()
         with open(os.path.join(session_dir, username, username + '.pk'), 'wb') as f:
             pickle.dump(login_session, f)
+    except Exception as e:
+        logger.error('login error')
+        logger.error(e)
     finally:
         return redirect("wenkuindex")
 

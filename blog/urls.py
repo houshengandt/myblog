@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^tag/(?P<tag>.*)/$', views.TagView.as_view(), name='tag'),
     url(r'^about/$', views.AboutView.as_view(), name='about'),
     url(r'^admin/$', views.WarningView.as_view(), name='warning'),
+    url(r'^workshop/$', views.WorkShopView.as_view(), name='workshop'),
 ]

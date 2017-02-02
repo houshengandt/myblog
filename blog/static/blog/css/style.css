@@ -11,7 +11,7 @@ hr {
     margin-right: 50px;
     float: right;
 }
-.jumbotron {
+.base-page-jumbotron {
     margin: 0 -15px 0 -15px;
     border-radius: 0;
     background-color: #ac2925;
@@ -150,6 +150,11 @@ hr {
 }
 #id-article,#id-article-list {
     padding: 30px 60px 60px 60px;
+}
+/*workshop page*/
+.btn-mybutton {
+    background-color: #ac2925;
+    color: white;
 }
 
 

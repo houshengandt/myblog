@@ -74,3 +74,7 @@ class AboutView(TemplateView):
 
 class WarningView(TemplateView):
     template_name = 'warning.html'
+
+
+class WorkShopView(TemplateView):
+    template_name = 'workshop.html'
