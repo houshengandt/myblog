@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'todolist/css/uikit.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'todolist/css/style.css' %}" />
+</head>
+<body class="uk-background-cover uk-background-fixed" style="background-image: url('{% static 'todolist/background.jpg' %}');">
+    <div class="uk-container page-wrap-for-sticky-footer">
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="{% url 'todolistindex' %}">To Do List</a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+        </nav>
+        <hr class="uk-divider-icon">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>To Do List 示例</p>
+        <p>测试账号: 用户名 test1 密码 test1pw</p>
+    </footer>
+{#    <a href="#" uk-totop uk-scroll></a>#}
+    <script src="{% static 'todolist/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'todolist/js/uikit.min.js' %}"></script>
+    <script src="{% static 'todolist/js/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'todolist/js/script.js' %}"></script>
+</body>
+</html>

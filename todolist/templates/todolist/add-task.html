@@ -1,0 +1,13 @@
+{% extends 'todolist/base.html' %}
+{% block title %}添加任务{% endblock %}
+{% block content %}
+    <form action="{% url 'create_task' %}" method="post">
+        {% csrf_token %}
+        <input class="uk-input" type="text" name="task" placeholder="新任务">
+        <h2>备注：</h2>
+        <textarea class="uk-textarea" name="remark" cols="30" rows="6" placeholder="更多描述..."></textarea>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-primary" type="submit">添加任务</button>
+        </div>
+    </form>
+{% endblock %}

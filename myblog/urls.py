@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^wenkucheckin/', include('wenkucheckin.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
     url(r'^youarenotsupposedtobehere/', include(admin.site.urls)),
+    url(r'^workshop/todolist/', include('todolist.urls')),
 ]

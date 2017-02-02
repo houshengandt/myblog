@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'wenkucheckin',
     'django_celery_results',
     'django_celery_beat',
+    'todolist',
 )
 
 MIDDLEWARE_CLASSES = (
