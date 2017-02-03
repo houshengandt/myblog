@@ -9,11 +9,11 @@ $(document).ready(function () {
             if($(this).is(':checked')==true) {
                 $(this).next().text("已完成");
                 $('div[task-id=' + task_id + ']').addClass('uk-text-muted');
-                $.get('/complete-task/', { pk: task_id })
+                $.get('/workshop/todolist/complete-task/', { pk: task_id })
             }else {
                 $(this).next().text("未完成");
                 $('div[task-id=' + task_id + ']').removeClass('uk-text-muted');
-                $.get('/uncomplete-task/', { pk: task_id })
+                $.get('/workshop/todolist/uncomplete-task/', { pk: task_id })
             }
         })
     });
