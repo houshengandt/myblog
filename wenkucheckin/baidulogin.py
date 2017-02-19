@@ -10,15 +10,19 @@ import base64
 
 class LoginBaidu(object):
 
-    token_url = 'https://passport.baidu.com/v2/api/?getapi&tpl=mn&apiver=v3&tt={tt}&class=login&gid={gid}&logintype=dialogLogin&callback={callback}'
-    rsa_url = 'https://passport.baidu.com/v2/getpublickey?token={token}&tpl=mn&apiver=v3&tt={tt}&gid={gid}&callback={callback}'
+    token_url = 'https://passport.baidu.com/v2/api/?getapi&tpl=mn&apiver=v3&tt={tt}&class=login&gid={gid}&' \
+                'logintype=dialogLogin&callback={callback}'
+    rsa_url = 'https://passport.baidu.com/v2/getpublickey?token={token}&tpl=mn&apiver=v3&tt={tt}&gid={gid}&' \
+              'callback={callback}'
     verifycode_url = 'https://passport.baidu.com/cgi-bin/genimage?{code_string}'
-    login_check_url = 'https://passport.baidu.com/v2/api/?logincheck&token={token}&tpl=mn&apiver=v3&tt={tt}&sub_source=leadsetpwd&username={username}&isphone=false&callback={callback}'
+    login_check_url = 'https://passport.baidu.com/v2/api/?logincheck&token={token}&tpl=mn&apiver=v3&tt={tt}&' \
+                      'sub_source=leadsetpwd&username={username}&isphone=false&callback={callback}'
     login_url = 'https://passport.baidu.com/v2/api/?login'
 
     def __init__(self, username, password):
         self.username = username
         self.password = password
+        self.verifycode = ''
         self.gid = self.get_gid()
         self.session = requests.Session()
         self.session.get('http://yun.baidu.com')
@@ -37,19 +41,20 @@ class LoginBaidu(object):
         if match:
             token = match.group(1)
         else:
-            raise TokenError("can not find token in response")
+            raise Exception("can not find token in response")
         return token
 
     def get_code_string(self):
         tt = self.get_tt()
         callback = self.get_callback()
-        code_string_response = self.session.get(self.login_check_url.format(token=self.token, tt=tt, username=self.username, callback=callback))
+        code_string_response = self.session.get(self.login_check_url.format(token=self.token, tt=tt,
+                                                                            username=self.username, callback=callback))
         pattern = re.compile(r'"codeString"\s*:\s*"(\w+)"')
         match = pattern.search(code_string_response.text)
         if match:
             code_string = match.group(1)
         else:
-            raise CodeStringError("can not find codestring in response")
+            raise Exception("can not find codestring in response")
         return code_string
 
     def get_keys(self):
@@ -66,7 +71,7 @@ class LoginBaidu(object):
         match = pattern.search(keys_response.text)
         if match:
             pubkey = match.group(1)
-            pubkey = pubkey.replace('\\n','\n').replace('\\','')
+            pubkey = pubkey.replace('\\n', '\n').replace('\\', '')
         else:
             raise Exception
         return key, pubkey
@@ -80,7 +85,8 @@ class LoginBaidu(object):
             codeWriter.write(verifycode_response.content)
             codeWriter.close()
 
-    def encrypt_password(self, pre_pw, pubkey):
+    @staticmethod
+    def encrypt_password(pre_pw, pubkey):
         rsakey = RSA.importKey(pubkey)
         cipher = PKCS1_v1_5.new(rsakey)
         password = base64.b64encode(cipher.encrypt(pre_pw.encode())).decode()
@@ -92,7 +98,8 @@ class LoginBaidu(object):
 
     @staticmethod
     def base36(q):
-        if q < 0: raise ValueError("must supply a positive integer")
+        if q < 0:
+            raise ValueError("must supply a positive integer")
         letters = "0123456789abcdefghijklmnopqrstuvwxyz"
         converted = []
         while q != 0:
@@ -142,11 +149,11 @@ class LoginBaidu(object):
             'username': self.username,
             'password': self.encrypted_password,
             'verifycode': self.verifycode,
-            'mem_pass':'on',
+            'mem_pass': 'on',
             'rsakey': self.key,
-            'crypttype':'12',
-            'ppui_logintime':'10842',
-            'countrycode':'',
+            'crypttype': '12',
+            'ppui_logintime': '10842',
+            'countrycode': '',
             'callback': 'parent.' + callback,
             }
 
@@ -156,21 +163,23 @@ class LoginBaidu(object):
 
 
 class LoginBaiduWenku(LoginBaidu):
+
     check_in_url = "http://wenku.baidu.com/task/submit/signin"
+    click_url = 'http://wkctj.baidu.com/click.gif?pid=1&bid=1&fr=4&act_id=100369&' \
+                'url=http://wenku.baidu.com/task/browse/daily&refer=&t={tt}&index=2'
     check_tickets_url = "http://wenku.baidu.com/user/interface/getuserticket?ts=1&pn=0"
 
     def check_in(self):
+        tt = self.get_tt()
         self.session.get(self.check_in_url)
+        self.session.get(self.click_url.format(tt=tt))
 
     def check_tickets(self):
         tickets_response = self.session.get(self.check_tickets_url)
         pattern = re.compile("\"total_count\":(\d+)")
         match = pattern.search(tickets_response.text)
-        total_count = 0
         if match:
             total_count = int(match.group(1))
         else:
             raise Exception
         return total_count
-
-
