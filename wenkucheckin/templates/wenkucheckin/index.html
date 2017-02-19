@@ -41,7 +41,9 @@
                         <td>{{ baiduaccount.check_in_times }}</td>
                         <td>{{ baiduaccount.ticket }}</td>
                         <td>{{ baiduaccount.last_checkin_time }}</td>
+                        {% if user.is_superuser %}
                         <td><a href="{% url 'delete_account' baiduaccount.pk %}">删除</a></td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </table>

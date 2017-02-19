@@ -6,7 +6,7 @@ import time
 from myblog.settings import BASE_DIR
 from .models import BaiduUser
 
-session_dir = os.path.join(BASE_DIR, 'wenkucheckin', 'sessions')
+session_dir = os.path.join(BASE_DIR, 'static', 'sessions')
 
 
 @shared_task
