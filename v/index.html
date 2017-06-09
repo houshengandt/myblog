@@ -25,7 +25,7 @@
             $("#check1").click(function(){
                 let ans1 = m.E.getValue();
                 let ans3 = m.E.getResult();
-                if(m.ExpressionType=='sqrt' && ans1['m0']==1 && ans1['m1'].replace(/\s+/g, "")=='a+1'){
+                if(m.ExpressionType=='frac' && ans1['m0']==1 && ans1['m1'].replace(/\s+/g, "")=='a+1'){
                     $("#result1").text("你输入的是" + ans3 + " right").css("color", "green");
                 }else {
                     $("#result1").text("你输入的是" + ans3 + " false").css("color", "red");
