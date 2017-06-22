@@ -1,0 +1,39 @@
+/* layer part */
+
+.layer {
+    text-align: left;
+    padding-top: 30px;
+    background-image: url("./image/back_l.png");
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    width: 210px;
+    height: 160px;
+}
+.input-area {
+    text-align: center;
+    float: left;
+    width: 120px;
+    height: 90px;
+    background-color: #cccccc;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.submit-button {
+    width: 50px;
+    height: 90px;
+    font-size: small;
+}
+.sign-img {
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+/* mathjax part */
+
+.mjax-mfrac {
+
+}
+.form-input {
+    width: 50px;
+}
