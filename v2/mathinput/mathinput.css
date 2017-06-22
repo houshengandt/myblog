@@ -12,11 +12,12 @@
 .input-area {
     text-align: center;
     float: left;
-    width: 120px;
-    height: 90px;
+    width: 100px;
+    height: 70px;
     background-color: #cccccc;
     margin-left: 10px;
     margin-right: 20px;
+    padding: 10px;
 }
 .submit-button {
     width: 50px;
@@ -31,8 +32,11 @@
 
 /* mathjax part */
 
-.mjax-mfrac {
-
+.input-area .mjx-line {
+    top: -20px !important;
+}
+.input-area .mjx-denominator {
+    top: -15px !important;
 }
 .form-input {
     width: 50px;

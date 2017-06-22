@@ -1,5 +1,5 @@
 var signExp = {
-    "frac": "\\( \\frac{\\FormInput{m0}}{\\FormInput{m1}} \\)",
+    "frac": "\\( \\frac{\\FormInput[1][form-input]{m0}}{\\FormInput[1][form-input]{m1}} \\)",
     "sqrt": "\\( \\sqrt{\\FormInput{m0}} \\)",
     "power": "\\( \\FormInput{m0}^\\FormInput{m1} \\)"
 }
@@ -51,12 +51,17 @@ mathIn.prototype = {
     },
 
     getResult: function () {
+        var self = this
         var exp = this.expression;
         var r = this.getValue();
         for(var i in r){
             console.log(i);
             console.log(r[i]);
-            exp = exp.replace("\\FormInput{" + i + "}", r[i]);
+            if(self.ExpressionType=='frac'){
+                exp = exp.replace("\\FormInput[1][form-input]{" + i + "}", r[i]);
+            } else {
+                exp = exp.replace("\\FormInput{" + i + "}", r[i]);
+            }
         }
         console.log(exp);
         return exp;

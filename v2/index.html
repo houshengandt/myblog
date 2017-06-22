@@ -12,7 +12,9 @@
         jax: ["input/TeX","output/HTML-CSS"],
         tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
         TeX: {extensions: ["AMSmath.js","AMSsymbols.js"]},
-        CommonHTML: {scale: 100}
+        CommonHTML: {scale: 100},
+        showProcessingMessages: false,
+        showMathMenu: false
         });
     </script>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -38,7 +40,6 @@
     <style>
         .content {
             margin-top: 100px;
-            margin-left: 120px;
             font-size: 150.0%;
         }
         #check1,#check2 {
@@ -46,7 +47,6 @@
         }
         #result1,#result2 {
             padding-top: 30px;
-            text-align: center;
             height: 100px;
         }
         .exp {
@@ -59,15 +59,18 @@
 </head>
 <body>
     <div class="content">
-        <button id="test_b">a</button>
         <div id="test"></div>
         <div class="pure-g">
             <div class="exp pure-u-2-3"><span> \( (1-  \)</span>   <div style="display: inline;position: relative" id="0"><div style="display: inline" id="1"><input id="2" style="width:54px" type="text"></div></div>  <span> \( )\centerdot\frac{a^2+2a+1}{a} = a+1\) </span></div>
             <div class="pure-u-1-3">
                 <button id="check1" class="pure-button pure-button-primary">Check</button>
-            </div> 
+                <span>tip: \( \frac{1}{a+1} \)</span>
+            </div>
+            <div class="pure-u-2-3"></div>  
+            <div class="pure-u-1-3">
+                <div id="result1"></div>   
+            </div>  
         </div>
-        <div id="result1"></div>   
         <div class="pure-g">
             <div class="exp pure-u-2-3"><span> \( \frac{1}{3 + \sqrt{3}} + \frac{1}{5\sqrt{\FormInput{q2}} + 3\sqrt{5}} + \frac{1}{7\sqrt{5} + 5\sqrt{7}} + ... ...  + \frac{1}{49\sqrt{47} + 47\sqrt{49} } = 0.9\) </span></div>
             <div class="pure-u-1-3">
