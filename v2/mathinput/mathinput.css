@@ -26,8 +26,8 @@
 }
 .sign-img {
     padding: 10px;
-    width: 50px;
-    height: 50px;
+    width: 49px;
+    height: 49px;
 }
 
 /* mathjax part */
@@ -40,4 +40,7 @@
 }
 .form-input {
     width: 50px;
+}
+.mjx-math input {
+    text-align: center !important;
 }

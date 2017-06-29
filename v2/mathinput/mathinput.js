@@ -14,6 +14,39 @@ var buttonImage = {
 }
 
 
+MathJax.Callback.Queue(
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  var VERSION = "1.0";
+
+  var TEX = MathJax.InputJax.TeX,
+      TEXDEF = TEX.Definitions,
+      MML = MathJax.ElementJax.mml,
+      HTML = MathJax.HTML;
+
+  TEXDEF.macros.FormInput = "FormInput";
+
+  TEX.Parse.Augment({
+    //
+    //  Implements \FormInput[size][class]{name} 
+    //
+    FormInput: function (name) {
+      var size = this.GetBrackets(name),
+          cls = this.GetBrackets(name),
+          val = this.GetBrackets(name),
+          id = this.GetArgument(name);
+      if (size == null || size === "") {size = "2"}
+      if (val == null) {val = ""}
+      cls = ("MathJax_Input "+(cls||"")).replace(/ +$/,"");
+      var input = HTML.Element("input",{type:"text", name:id, id:id, size:size, className:cls, value:val});
+      input.setAttribute("xmlns","http://www.w3.org/1999/xhtml");
+      var mml = MML["annotation-xml"](MML.xml(input)).With({encoding:"application/xhtml+xml",isToken:true});
+      this.Push(MML.semantics(mml));
+    }
+  });
+  
+}));
+ 
+
 function mathIn (Elem,ExpressionType) {
     this.Elem = Elem;
     this.$Elem = $(Elem);
@@ -104,16 +137,18 @@ MathInput.prototype = {
     },
     _initExpression: function () {
         this.M = new mathIn(this.inputArea, this.expressionType)
-        this.M.create()
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     },
     getExpressionType: function () {
         var self = this
         $('.sign-img').on('click', function(event) {
-            event.stopPropagation()
+            $('input[id="m0"]').css("border", "")
+            $('input[id="m1"]').css("border", "")
+            $('img[expression-type=' + self.expressionType + ']').css("border", "")
             self.expressionType = $(this).attr('expression-type')
             self.changeStatus($(this))
             self._initExpression()
+            event.stopPropagation()
         })
     },
     changeStatus: function ($button) {
@@ -138,7 +173,8 @@ MathInput.prototype = {
 }
 
 
-function Control (Elem) {
+function Control (Elem, Ans) {
+    this.Ans = Ans
     this.$parent = $(Elem).parent()
     this.$$parent = this.$parent.parent()
     this.$Elem = $(Elem)
@@ -199,13 +235,6 @@ Control.prototype = {
         console.log(self.layer_x)
         console.log(self.layer_y)
     },
-    enter: function () {
-        var self = this
-        $('.submit-button').click(function () {
-            event.stopPropagation()
-            self.showResult()
-        })
-    },
     showResult: function () {
         var self = this
         self.oriInput = self.$Elem
@@ -214,23 +243,39 @@ Control.prototype = {
         self.MathInput.layerElem.hide()
         // self.$parent.click(function(){
         //     self.$parent.html(self.oriInput)
-        // })
-        self.$parent.one('click', function(){
+        // }) 
+        self.$parent.one('click', function(event){
+            event.stopPropagation()
             self.$parent.html(self.oriInput)
             self._toggle(self.oriInput)
         })
     },
     check: function (answer){
         var self = this
-        var input = self.MathInput.M.getValue()
-        if(input['type']==answer['type']&&input['m0']==answer['m0']&&input['m1']==answer['m1']){
-            return true
-        } else {
-            return false
-        }
+        $('.submit-button').click(function (event) {
+            var input = self.MathInput.M.getValue()
+            $('input[id="m0"]').css("border", "")
+            $('input[id="m1"]').css("border", "")
+            $('img[expression-type=' + self.MathInput.expressionType + ']').css("border", "")
+            if(input['type']==answer['type']){
+                if(input['m0']==answer['m0']&&input['m1']==answer['m1']){
+                    self.showResult()
+                } else {
+                    if(input['m0']!=answer['m0']){
+                        $('input[id="m0"]').css("border", "1px solid red")
+                    }
+                    if(input['m1']!=answer['m1']){
+                        $('input[id="m1"]').css("border", "1px solid red")
+                    }
+                }
+            } else {
+                $('img[expression-type=' + self.MathInput.expressionType + ']').css("border", "1px solid red")
+            }
+            event.stopPropagation()
+        })
     },
     create: function () {
         this._toggle(this.$Elem)
-        this.enter()
+        this.check(this.Ans)
     }
 }
