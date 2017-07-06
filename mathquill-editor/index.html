@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=624">
+
+<title>Editor Test</title>
+
+<!--<link rel="stylesheet" type="text/css" href="support/home.css">-->
+<link rel="stylesheet" type="text/css" href="./mathquill/mathquill.css">
+<style>
+    button {
+      align-items: center;
+      background-color: #007fff;
+      border: none;
+      color: #fff;
+      display: flex;
+      float: left;
+      height: 48px;
+      justify-content: center;
+      width: 48px;
+    }
+
+    #buttons {
+      overflow: hidden;
+    }
+    #editor-outer {
+        margin-top: 0;
+    }
+    #editor {
+        width: 1050px;
+        min-height: 80px;
+    }
+</style>
+</head>
+<body>
+<div id="body">
+
+
+
+<div id="buttons"></div>
+<p id="editor-outer"><span id="editor"></span></p>
+<div><textarea name="" id="result" cols="148" rows="2"></textarea></div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="./mathquill/mathquill.min.js"></script>
+<script type="text/javascript">
+    MQ = MathQuill.getInterface(MathQuill.getInterface.MAX);
+    var mq = MQ.MathField($('#editor')[0], {
+        autoSubscriptNumerals: true,
+        handlers: { edit: function() {
+            if (!latex.is(':focus')) latex.val(mq.latex());
+        } }
+    });
+    mq.focus()
+    var $buttons = document.getElementById('buttons');
+    const buttons = {
+        '\\sqrt{a}': '\\sqrt',
+        '\\frac{a}{b}': '\\frac',
+        '\\geq': '\geq',
+        '\\leq': '\leq',
+        '\\alpha': '\alpha',
+        '\\beta': '\\beta',
+        'a^n': '^',
+        'a_n': '_',
+        '|': '|',
+        '[': '[',
+        ']': ']',
+        '(': '(',
+        ')': ')',
+        ',': ',',
+        '.': '.',
+        '+': '+',
+        '-': '-',
+        ':': ':',
+        ';': ';',
+        '<': '<',
+        '>': '>',
+        '\\%': '\%',
+      };
+
+    Object.keys(buttons).forEach(function (lable) {
+        var $button = document.createElement('button');
+
+        $button.innerHTML = lable;
+        MQ.StaticMath($button);
+        $button.addEventListener('click', function () {
+          mq.cmd(buttons[lable])
+          mq.focus()
+        });
+
+        $buttons.appendChild($button);
+    });
+    var latex = $("#result")
+    latex.bind('keydown keypress', function() {
+        var prev = latex.val();
+        setTimeout(function() {
+            var now = latex.val();
+            if (now !== prev) mq.latex(now);
+        });
+    })
+    latex.val(mq.latex());
+</script>
+</body>
+</html>
