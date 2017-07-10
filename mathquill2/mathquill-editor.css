@@ -6,9 +6,9 @@ button {
       padding: 0;
       display: flex;
       float: left;
-      height: 50px;
+      height: 60px;
       justify-content: center;
-      width: 50px;
+      width: 60px;
     }
 
 .buttons {
@@ -19,7 +19,7 @@ button {
     left: 0px;
     bottom: 0px;*/
     text-align: center;
-    width: 150px;
+    width: 181px;
     min-height: 50px;
     max-height: 100px;
     border: 0px;

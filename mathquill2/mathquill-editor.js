@@ -57,6 +57,12 @@ mathEditor.prototype = {
         var control_y = $editor.css('min-height')
         self.layer_x = control_x + 'px'
         self.layer_y = control_y
+        console.log(x)
+        console.log(y)
+        console.log(control_x)
+        console.log(control_y)
+        console.log(self.layer_x)
+        console.log(self.layer_y)
     },
 
     _initEditor: function () {
@@ -81,11 +87,12 @@ mathEditor.prototype = {
                 editor.cmd(buttons[lable])
                 editor.focus()
             });
-
+            
             self.$buttons.append($button);
             MQ.StaticMath($button);
             
         });
+
         this.editor = editor;
     },
     
