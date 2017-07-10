@@ -1,0 +1,43 @@
+button {
+      align-items: center;
+      background-color: #007fff;
+      border: none;
+      color: #fff;
+      padding: 0;
+      display: flex;
+      float: left;
+      height: 50px;
+      justify-content: center;
+      width: 50px;
+    }
+
+.buttons {
+    overflow: hidden;
+}
+.editor {
+    /*position: absolute;
+    left: 0px;
+    bottom: 0px;*/
+    text-align: center;
+    width: 150px;
+    min-height: 50px;
+    max-height: 100px;
+    border: 0px;
+    border-bottom: 1px solid black;
+    /*overflow-y: hidden;*/
+    
+}
+.editor:focus {
+    width: 150px;
+    min-height: 50px;
+    max-height: 100px;
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+
+
+.mq-editable-field.mq-focused {
+    box-shadow: none;
+    border-color: white;
+    border-bottom: 1px solid black;
+}
