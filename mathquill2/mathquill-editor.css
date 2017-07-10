@@ -15,29 +15,21 @@ button {
     overflow: hidden;
 }
 .editor {
-    /*position: absolute;
-    left: 0px;
-    bottom: 0px;*/
     text-align: center;
     width: 181px;
     min-height: 50px;
     max-height: 100px;
     border: 0px;
     border-bottom: 1px solid black;
-    /*overflow-y: hidden;*/
+    overflow-y: auto;
     
 }
-.editor:focus {
-    width: 150px;
-    min-height: 50px;
-    max-height: 100px;
-    border: 0px;
-    border-bottom: 1px solid black;
-}
-
 
 .mq-editable-field.mq-focused {
     box-shadow: none;
     border-color: white;
     border-bottom: 1px solid black;
+}
+.mq-sqrt-prefix {
+    transform: none !important;
 }

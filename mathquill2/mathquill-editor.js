@@ -23,11 +23,10 @@ mathEditor.prototype = {
         $ContainerElem.css('position','relative')
         let $Editor, $buttons
 
-        $Editor = $('<span class="editor"></sapn>')
+        $Editor = $('<span class="editor"></sapn>').css('position', 'relative').css('top', 25)
         this.$Editor = $Editor
         this._getEditorPos()
-        $buttons = $('<div class="buttons" style="display:none;"></div>')
-        $buttons.css('position', 'absolute').css('top', self.layer_y).css('left', self.layer_x).css('z-index', '999')
+        $buttons = $('<div class="buttons" button_id="' + self.id + '" style="display:none;"></div>').css('position', 'absolute').css('top', self.layer_y).css('left', 0).css('z-index', '999')
 
         $ContainerElem.append($Editor)
         $ContainerElem.append($Editor).append($buttons);
@@ -42,6 +41,9 @@ mathEditor.prototype = {
         self.$Editor.on('click', function(event){
             event.stopPropagation()
             self.$buttons.show()
+            $('.buttons').each(function(){
+                if($(this).attr('button_id')!=self.id) $(this).hide()
+            })
         })
         $('body').on('click', function(event){
             self.$buttons.hide()
@@ -57,12 +59,6 @@ mathEditor.prototype = {
         var control_y = $editor.css('min-height')
         self.layer_x = control_x + 'px'
         self.layer_y = control_y
-        console.log(x)
-        console.log(y)
-        console.log(control_x)
-        console.log(control_y)
-        console.log(self.layer_x)
-        console.log(self.layer_y)
     },
 
     _initEditor: function () {
@@ -79,20 +75,18 @@ mathEditor.prototype = {
             }
         })
         Object.keys(buttons).forEach(function (lable) {
-            var $button = document.createElement('button');
+            var $button = $('<button></button>')
 
-            $button.innerHTML = lable;
-            $button.addEventListener('click', function (event) {
+            $button.text(lable);
+            $button.on('click', function (event) {
                 event.stopPropagation()
                 editor.cmd(buttons[lable])
                 editor.focus()
             });
-            
+            MQ.StaticMath($button[0]);
             self.$buttons.append($button);
-            MQ.StaticMath($button);
             
         });
-
         this.editor = editor;
     },
     
@@ -105,6 +99,7 @@ mathEditor.prototype = {
         this._initDom();
         this._initEditor();
         this._toggle()
+        
     }
 }
 
