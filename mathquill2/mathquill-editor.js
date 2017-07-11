@@ -26,7 +26,11 @@ mathEditor.prototype = {
         $Editor = $('<span class="editor"></sapn>').css('position', 'relative').css('top', 25)
         this.$Editor = $Editor
         this._getEditorPos()
-        $buttons = $('<div class="buttons" button_id="' + self.id + '" style="display:none;"></div>').css('position', 'absolute').css('top', self.layer_y).css('left', 0).css('z-index', '999')
+        $buttons = $('<div class="buttons" button_id="' + self.id + '" style="display:none;"></div>')
+                    .css('position', 'absolute').css('top', self.layer_y).css('left', 0).css('z-index', '999')
+                    .on('click', function(event){
+                        event.stopPropagation()
+                    })
 
         $ContainerElem.append($Editor)
         $ContainerElem.append($Editor).append($buttons);
@@ -74,14 +78,28 @@ mathEditor.prototype = {
                 }
             }
         })
+        function restrictInput(exp) {
+            var latex = editor.latex()
+            if(exp=='^'){
+                exp = '\\^'
+            } else {
+                exp = exp.replace('\\',"\\\\")
+            }
+            var reg = new RegExp(exp, "g")
+            return latex.match(reg)?latex.match(reg).length:0
+        }
         Object.keys(buttons).forEach(function (lable) {
             var $button = $('<button></button>')
 
             $button.text(lable);
-            $button.on('click', function (event) {
-                event.stopPropagation()
-                editor.cmd(buttons[lable])
-                editor.focus()
+            $button.on('click', function () {
+                if(restrictInput(buttons[lable])<3){
+                    editor.cmd(buttons[lable])
+                    editor.focus()
+                }else {
+                   
+                }
+                
             });
             MQ.StaticMath($button[0]);
             self.$buttons.append($button);

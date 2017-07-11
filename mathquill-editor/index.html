@@ -84,5 +84,11 @@
     var latex = $("#result")
     latex.html(mq.latex());
 </script>
+<script>
+    var str1 = "\sqrt{\sqrt{\sqrt{\sqrt{ }}}}"
+    var reg = new RegExp('\sqrt', "g")
+    var count = str1.match(reg)
+    console.log(count.length)
+</script>
 </body>
 </html>
